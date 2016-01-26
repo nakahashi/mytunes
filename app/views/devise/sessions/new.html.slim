@@ -1,0 +1,36 @@
+- content_for :navbar do
+  .collapse.navbar-collapse#navbar-menu
+    ul.nav.navbar-nav.navbar-right
+      li = link_to "デモ", "#"
+      
+h3 ログイン
+
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .row
+    .col-sm-1
+    .col-sm-10.field
+      = f.email_field :email, class: "form-control", placeholder: 'メールアドレス', autofocus: true
+    .col-sm-1
+  br
+    
+  .row
+    .col-sm-1
+    .col-sm-10.field
+      = f.password_field :password, class:"form-control", placeholder: "パスワード"
+    .col-sm-1
+  br
+
+  - if devise_mapping.rememberable?
+    .row
+      .col-sm-1
+      .col-sm-10.field
+        = f.check_box :remember_me
+        = f.label :remember_me
+      .col-sm-1
+    br
+
+  .row
+    .col-sm-1
+    .col-sm-10.actions
+      = f.submit "ログイン", class:"btn btn-primary"
+    .col-sm-1

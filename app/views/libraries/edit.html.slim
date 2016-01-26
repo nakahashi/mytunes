@@ -1,0 +1,23 @@
+- content_for :navbar do
+  .collapse.navbar-collapse#navbar-menu
+    ul.nav.navbar-nav.navbar-right
+      li = link_to "DASHBORD", libraries_path
+      li = link_to "サインアウト", destroy_user_session_path, method: :delete 
+
+h3 iTunesライブラリ編集
+
+p iTunesライブラリファイル、説明の更新ができます。
+
+= form_for(@library, multipart: true) do |f|
+  .row
+    .col-sm-1
+    .col-sm-7 = f.text_field :title, placeholder: "ライブラリの説明", class: 'form-control', type: 'text'
+    .col-sm-3 = link_to '更新', update_library_path(@library), class: 'btn btn-primary', method: :patch
+    .col-sm-1
+  br
+  .row
+    .col-sm-1
+    / file_fildだと自然にverbがpostになるせいで、#createが呼ばれる
+    .col-sm-10 = f.file_field :content, class: 'js_xml_upload'
+    .col-sm-1
+  br

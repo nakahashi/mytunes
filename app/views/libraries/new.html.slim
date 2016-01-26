@@ -1,0 +1,21 @@
+- content_for :navbar do
+  .collapse.navbar-collapse#navbar-menu
+    ul.nav.navbar-nav.navbar-right
+      li = link_to "DASHBORD", libraries_path
+      li = link_to "サインアウト", destroy_user_session_path, method: :delete 
+
+h3 iTunesライブラリ登録
+
+p 登録したいiTunesライブラリファイルを選択して下さい。
+
+= form_for(@library, multipart: true) do |f|
+  .row
+    .col-sm-1
+    .col-sm-10 = f.text_field :title, placeholder: "ライブラリの説明", class: 'form-control input-sm', type: 'text'
+    .col-sm-1
+  br
+  .row
+    .col-sm-1
+    .col-sm-10 = f.file_field :content, class: 'js_xml_upload'
+    .col-sm-1
+  br

@@ -1,0 +1,28 @@
+- content_for :navbar do
+  .collapse.navbar-collapse#navbar-menu
+    ul.nav.navbar-nav.navbar-right
+      li = link_to "サインイン", new_user_registration_path
+      li = link_to "デモ", "#"
+
+h1 Welcome to <span>my</span>Tunes
+br
+p myTunesは、あなたのiTunesライブラリを一望できるサービスです。
+br
+
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .row
+    .col-sm-6
+    .col-sm-6.field
+      = f.email_field :email, class:"form-control", placeholder: "メールアドレス", autofocus: true
+  br
+  
+  .row
+    .col-sm-6
+    .col-sm-6.field
+      = f.password_field :password, class:"form-control", placeholder: "パスワード", autocomplete: "off"
+  br
+
+  .row
+    .col-sm-6
+    .col-sm-6.actions
+      = f.submit "ログイン", class:"btn btn-primary"

@@ -1,0 +1,19 @@
+- content_for :navbar do
+  .collapse.navbar-collapse#navbar-menu
+    ul.nav.navbar-nav.navbar-right
+      li = link_to "DASHBORD", libraries_path
+      li = link_to "ライブラリ", library_tracks_path
+      li = link_to "サインアウト", destroy_user_session_path, :method => :delete
+
+h3 トラック情報
+
+.row
+  .col-sm-4 = "アーティスト : #{@track[:artist]}"
+  .col-sm-4 = "タイトル : #{@track[:name]}"
+  .col-sm-4 = "アルバム : #{@track[:album]}"
+.row
+  .col-sm-3 = "ジャンル : #{@track[:genre]}"
+  .col-sm-3 = "★" * (@track[:rating].to_i / 20)
+  .col-sm-3 = "作曲者 : #{@track[:composer]}"
+  / .col-sm-3 = "アルバム : #{@track[:album]}"
+  / .col-sm-3 = "ジャンル : #{@track[:genre]}"

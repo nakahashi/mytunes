@@ -1,0 +1,31 @@
+h3 ユーザ登録
+p
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    .row
+      .col-sm-1
+      .col-sm-10.field
+        = f.email_field :email, class: "form-control", placeholder: 'メールアドレス', autofocus: true
+      .col-sm-1
+    br
+
+    .row
+      .col-sm-1
+      .col-sm-10.field
+        = f.password_field :password, class:"form-control", placeholder: "パスワード", autocomplete: "off"
+      .col-sm-1
+    br
+
+    .row
+      .col-sm-1
+      .col-sm-10.field
+        = f.password_field :password_confirmation, class:"form-control", placeholder: "パスワード確認", autocomplete: "off"
+      .col-sm-1
+    br
+
+    .row
+      .col-sm-1
+      .col-sm-10.actions
+        = f.submit "サインイン", class:"btn btn-primary"
+      .col-sm-1
+    br

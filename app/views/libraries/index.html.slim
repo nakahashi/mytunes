@@ -1,0 +1,23 @@
+- content_for :navbar do
+  .collapse.navbar-collapse#navbar-menu
+    ul.nav.navbar-nav.navbar-right
+      li = link_to "サインアウト", destroy_user_session_path, method: :delete
+
+h3 DASH BORD
+
+- if @libraries.empty?
+  .row
+    .field.col-sm-1
+    .field.col-sm-10
+      = link_to 'ライブラリの登録', new_library_path, class: 'btn btn-primary form-control'
+    .field.col-sm-1
+- else
+  - @libraries.each do |library|
+    .row
+      .col-sm-1
+      .col-sm-10.btn-group
+        = link_to library.title, library_tracks_path(library), class: 'btn btn-link'
+        = link_to '一覧', library_tracks_path(library), class: 'btn btn-primary'
+        = link_to '更新', edit_library_path(library), class: 'btn btn-info'
+        = link_to '削除', destroy_library_path(library), class: 'btn btn-danger', method: :delete
+      .col-sm-1

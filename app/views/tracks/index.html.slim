@@ -1,0 +1,21 @@
+- content_for :navbar do
+  .collapse.navbar-collapse#navbar-menu
+    ul.nav.navbar-nav.navbar-right
+      li = link_to "DASHBORD", libraries_path
+      li = link_to "サインアウト", destroy_user_session_path, :method => :delete
+
+h3 ライブラリ
+
+table.table.table-striped-table-hover
+  thead
+    tr
+      th name
+      th artist
+      th album
+  tbody
+    - @parsed_library.tracks.each do |t|
+      tr
+        td = t[:name]
+        td = t[:artist]
+        td = t[:album]
+        td = link_to nil, library_track_path(@library, t[:track_id]), class: 'icono-document'
